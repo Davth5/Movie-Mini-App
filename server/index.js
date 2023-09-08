@@ -1,9 +1,11 @@
 const express = require("express");
 const app = express();
-const knex = require("knex")(require("./knexfile.js"));
+const cors = require("cors");
+const knex = require("knex")(require("./knexfile.js").development);
 const PORT = process.env.PORT || 8080;
 
 app.use(express.json());
+app.use(cors());
 
 app.get("/movies", async (req, res) => {
   try {
